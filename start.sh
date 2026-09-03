@@ -24,6 +24,10 @@ echo "✓ AI Service running (PID: $AI_PID, http://localhost:8000/docs)"
 # 2. Start Frontend Dev Server
 echo "[2/3] Starting React + Vite + Leaflet GIS Frontend (Port 3000)..."
 cd "$PROJECT_DIR/frontend"
+if [ ! -d "node_modules" ]; then
+    echo "Installing frontend dependencies..."
+    npm install
+fi
 npm run dev -- --port 3000 &
 FRONTEND_PID=$!
 echo "✓ Frontend running (PID: $FRONTEND_PID, http://localhost:3000)"
